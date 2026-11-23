@@ -1,0 +1,90 @@
+title: Zuhause
+views:
+  - title: Zuhause
+    path: wall
+    icon: mdi:home
+    type: sections
+    max_columns: 3
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Willkommen
+            icon: mdi:hand-wave
+          - type: markdown
+            content: >
+              {% set h = now().hour %}
+              {% if 5 <= h < 12 %}# 🌅 Guten Morgen
+              {% elif 12 <= h < 17 %}# ☀️ Guten Tag
+              {% elif 17 <= h < 21 %}# 🌆 Guten Abend
+              {% else %}# 🌙 Gute Nacht{% endif %}
+
+              # {{ now().strftime('%H:%M') }}
+
+              ### Mohammed, Habiba & Sila
+
+              {{ now().strftime('%d.%m.%Y') }}
+      - type: grid
+        cards:
+          - type: heading
+            heading: Geräte
+            icon: mdi:lightbulb-group
+          - type: button
+            name: Alles aus
+            icon: mdi:power
+            tap_action:
+              action: perform-action
+              perform_action: script.alles_aus
+              confirmation:
+                text: Wirklich alles ausschalten?
+          - type: tile
+            entity: light.wohnzimmerlischt
+            name: Wohnzimmer
+          - type: tile
+            entity: light.essen_licht
+            name: Essen
+          - type: tile
+            entity: light.kuche_licht
+            name: Küche
+          - type: tile
+            entity: light.schlaffzimmerlischt
+            name: Schlafzimmer
+          - type: tile
+            entity: light.silalischt
+            name: Sila
+          - type: tile
+            entity: light.flow_licht
+            name: Flow
+          - type: tile
+            entity: switch.balkon_steckdose
+            name: Balkon
+          - type: tile
+            entity: media_player.babat
+            name: TV
+          - type: heading
+            heading: Musik
+            icon: mdi:speaker
+          - type: tile
+            entity: media_player.wohnzimmer
+          - type: tile
+            entity: media_player.flur
+          - type: tile
+            entity: media_player.schlafzimmerg
+          - type: tile
+            entity: media_player.gruppe_music
+      - type: grid
+        cards:
+          - type: heading
+            heading: Info
+            icon: mdi:information
+          - type: glance
+            entities:
+              - person.habiba
+              - person.mbabat
+          - type: entities
+            entities:
+              - binary_sensor.flowsinsor_belegung
+          - type: tile
+            entity: binary_sensor.workday_sensor_de
+          - type: tile
+            entity: todo.zuhause

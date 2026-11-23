@@ -1,0 +1,42 @@
+script:
+  alles_aus:
+    alias: Alles aus
+    icon: mdi:power
+    sequence:
+      - action: light.turn_off
+        target:
+          entity_id: all
+        continue_on_error: true
+      - action: switch.turn_off
+        target:
+          entity_id: switch.balkon_steckdose
+        continue_on_error: true
+      - action: media_player.turn_off
+        target:
+          entity_id:
+            - media_player.babat
+            - media_player.wohnzimmer
+            - media_player.flur
+            - media_player.schlafzimmerg
+            - media_player.gruppe_music
+        continue_on_error: true
+
+automation:
+  - id: alles_aus_wenn_niemand_zuhause
+    alias: Alles aus wenn niemand zuhause
+    triggers:
+      - trigger: state
+        entity_id:
+          - person.mbabat
+          - person.habiba
+        to: not_home
+        for: "00:05:00"
+    conditions:
+      - condition: state
+        entity_id: person.mbabat
+        state: not_home
+      - condition: state
+        entity_id: person.habiba
+        state: not_home
+    actions:
+      - action: script.alles_aus
