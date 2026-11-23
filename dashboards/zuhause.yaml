@@ -6,25 +6,33 @@ views:
     type: sections
     max_columns: 3
     sections:
+      # ---------- 1. WILLKOMMEN ----------
       - type: grid
+        column_span: 3
         cards:
-          - type: heading
-            heading: Willkommen
-            icon: mdi:hand-wave
+          - type: clock
+            clock_style: digital
+            clock_size: large
+            show_seconds: false
+            time_format: "24"
+            grid_options:
+              columns: 6
           - type: markdown
+            grid_options:
+              columns: 6
             content: >
               {% set h = now().hour %}
-              {% if 5 <= h < 12 %}# 🌅 Guten Morgen
-              {% elif 12 <= h < 17 %}# ☀️ Guten Tag
-              {% elif 17 <= h < 21 %}# 🌆 Guten Abend
-              {% else %}# 🌙 Gute Nacht{% endif %}
-
-              # {{ now().strftime('%H:%M') }}
+              {% if 5 <= h < 12 %}## 🌅 Guten Morgen
+              {% elif 12 <= h < 17 %}## ☀️ Guten Tag
+              {% elif 17 <= h < 21 %}## 🌆 Guten Abend
+              {% else %}## 🌙 Gute Nacht{% endif %}
 
               ### Mohammed, Habiba & Sila
 
               {{ now().strftime('%d.%m.%Y') }}
+      # ---------- 2. GERÄTE ----------
       - type: grid
+        column_span: 2
         cards:
           - type: heading
             heading: Geräte
@@ -32,6 +40,10 @@ views:
           - type: button
             name: Alles aus
             icon: mdi:power
+            show_state: false
+            grid_options:
+              columns: full
+              rows: 2
             tap_action:
               action: perform-action
               perform_action: script.alles_aus
@@ -42,6 +54,8 @@ views:
             name: Wohnzimmer
             icon: mdi:sofa
             vertical: true
+            grid_options:
+              columns: 4
             tap_action:
               action: toggle
             icon_tap_action:
@@ -56,6 +70,8 @@ views:
             name: Essen
             icon: mdi:ceiling-light
             vertical: true
+            grid_options:
+              columns: 4
             tap_action:
               action: toggle
             icon_tap_action:
@@ -70,6 +86,8 @@ views:
             name: Küche
             icon: mdi:ceiling-light
             vertical: true
+            grid_options:
+              columns: 4
             tap_action:
               action: toggle
             icon_tap_action:
@@ -84,6 +102,8 @@ views:
             name: Schlafzimmer
             icon: mdi:bed
             vertical: true
+            grid_options:
+              columns: 4
             tap_action:
               action: toggle
             icon_tap_action:
@@ -98,6 +118,8 @@ views:
             name: Sila
             icon: mdi:lamp
             vertical: true
+            grid_options:
+              columns: 4
             tap_action:
               action: toggle
             icon_tap_action:
@@ -112,6 +134,8 @@ views:
             name: Flur
             icon: mdi:lightbulb
             vertical: true
+            grid_options:
+              columns: 4
             tap_action:
               action: toggle
             icon_tap_action:
@@ -126,6 +150,8 @@ views:
             name: Balkon
             icon: mdi:power-socket-eu
             vertical: true
+            grid_options:
+              columns: 4
             tap_action:
               action: toggle
             icon_tap_action:
@@ -137,6 +163,8 @@ views:
             name: TV
             icon: mdi:television
             vertical: true
+            grid_options:
+              columns: 4
             tap_action:
               action: toggle
             icon_tap_action:
@@ -145,19 +173,33 @@ views:
               action: more-info
           - type: heading
             heading: Musik
-            icon: mdi:speaker
+            icon: mdi:music
           - type: tile
             entity: media_player.flur
+            name: Flur
+            icon: mdi:speaker
+            grid_options:
+              columns: 4
           - type: tile
             entity: media_player.schlafzimmerg
+            name: Schlafzimmer
+            icon: mdi:speaker
+            grid_options:
+              columns: 4
           - type: tile
             entity: media_player.gruppe_music
+            name: Alle Boxen
+            icon: mdi:speaker
+            grid_options:
+              columns: 4
+      # ---------- 3. INFO ----------
       - type: grid
         cards:
           - type: heading
             heading: Info
             icon: mdi:information
           - type: glance
+            show_state: true
             entities:
               - person.habiba
               - person.mbabat
@@ -180,5 +222,7 @@ views:
               - binary_sensor.flowsinsor_belegung
           - type: tile
             entity: binary_sensor.workday_sensor_de
+            name: Arbeitstag
           - type: tile
             entity: todo.zuhause
+            name: Einkauf & ToDo

@@ -3,21 +3,23 @@ Orange Weiss:
     light:
       primary-color: "#FF6600"
       accent-color: "#FF9800"
-      primary-background-color: "#FFFFFF"
-      secondary-background-color: "#FFF4EA"
+      primary-background-color: "#F6F3EE"
+      secondary-background-color: "#FFF1E4"
       card-background-color: "#FFFFFF"
-      primary-text-color: "#222222"
-      secondary-text-color: "#6B6B6B"
+      primary-text-color: "#1F1F1F"
+      secondary-text-color: "#7A7A7A"
       state-icon-color: "#FF6600"
       paper-slider-active-color: "#FF6600"
+      divider-color: "#EFE7DD"
     dark:
       primary-color: "#FF8A3D"
       accent-color: "#FFB066"
-      primary-background-color: "#1B1B1B"
-      secondary-background-color: "#262626"
-      card-background-color: "#2A2A2A"
+      primary-background-color: "#161616"
+      secondary-background-color: "#232323"
+      card-background-color: "#262626"
       primary-text-color: "#F2F2F2"
       secondary-text-color: "#B0B0B0"
       state-icon-color: "#FF8A3D"
-  ha-card-border-radius: 20px
-  ha-card-box-shadow: 0 2px 10px rgba(0,0,0,0.08)
+  ha-card-border-radius: 24px
+  ha-card-border-width: 0px
+  ha-card-box-shadow: 0 4px 18px rgba(255, 102, 0, 0.10)
