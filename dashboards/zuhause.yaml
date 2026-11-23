@@ -161,6 +161,20 @@ views:
             entities:
               - person.habiba
               - person.mbabat
+          - type: markdown
+            title: ⛽ Tanken · SB Aachener Str.
+            content: >
+              {% set ents = integration_entities('tankerkoenig')
+                 | select('match', 'sensor\\..*aachener') | list %}
+              {% if ents | length == 0 %}
+              Keine Preise gefunden.
+              {% else %}
+              {% for e in ents %}
+              **{{ state_attr(e, 'friendly_name') }}:**
+              {% if states(e) | is_number %}{{ states(e) | float | round(3) }} €{% else %}{{ states(e) }}{% endif %}
+
+              {% endfor %}
+              {% endif %}
           - type: entities
             entities:
               - binary_sensor.flowsinsor_belegung
