@@ -287,22 +287,39 @@ views:
               - entity: input_number.strom_stand_monatsanfang
               - entity: input_number.strom_preis
           - type: markdown
+            title: 🌐 Internet-Geschwindigkeit
+            content: |
+              {% set dl = states('sensor.speedtest_download') %}
+              {% set ul = states('sensor.speedtest_upload') %}
+              {% set pg = states('sensor.speedtest_ping') %}
+              {% if dl | is_number %}
+              ⬇️ **Download: {{ dl | float | round(0) | int }} Mbit/s**<br>
+              ⬆️ **Upload: {{ ul | float | round(0) | int }} Mbit/s**<br>
+              ⏱️ Ping: {{ pg | float | round(0) | int }} ms
+              {% else %}
+              Noch keine Messung. Einstellungen → Geräte & Dienste → Integration hinzufügen → „Speedtest.net".
+              {% endif %}
+          - type: markdown
             title: 📶 Im WLAN
             content: |
               {% set d = integration_entities('unifi') | select('match', 'device_tracker\\.') | list %}
-              {% set ns = namespace(names=[]) %}
+              {% set ns = namespace(rows=[]) %}
               {% for e in d %}
               {% if is_state(e, 'home') %}
-              {% set ns.names = ns.names + [state_attr(e, 'friendly_name') or e] %}
+              {% set n = state_attr(e, 'friendly_name') or e %}
+              {% set ip = state_attr(e, 'ip') or '' %}
+              {% set ap = state_attr(e, 'ap_mac') or '' %}
+              {% set typ = '🔌' if state_attr(e, 'is_wired') else '📶' %}
+              {% set ns.rows = ns.rows + [[n, ip, typ]] %}
               {% endif %}
               {% endfor %}
               {% if d | length == 0 %}
               Keine UniFi-Geräte gefunden. In der UniFi-Integration unter „Konfigurieren" das Verfolgen von Clients einschalten.
               {% else %}
-              **{{ ns.names | length }} Geräte verbunden**
+              **{{ ns.rows | length }} Geräte verbunden**
 
-              {% for n in ns.names | sort %}
-              🟢 {{ n }}<br>
+              {% for r in ns.rows | sort %}
+              {{ r[2] }} **{{ r[0] }}**{% if r[1] %} · {{ r[1] }}{% endif %}<br>
               {% endfor %}
               {% endif %}
           - type: entities
