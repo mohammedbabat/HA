@@ -250,19 +250,29 @@ views:
             hold_action:
               action: more-info
           - type: markdown
-            title: ⛽ Tanken · SB Aachener Str.
-            content: >
-              {% set ents = integration_entities('tankerkoenig')
-                 | select('match', 'sensor\\..*aachener') | list %}
-              {% if ents | length == 0 %}
-              Keine Preise gefunden.
-              {% else %}
+            title: ⛽ Tanken · günstig 🟢 bis teuer 🔴
+            content: |
+              {% set ents = integration_entities('tankerkoenig') | select('match', 'sensor\\.') | list %}
+              {% for fuel in ['Super E10', 'Super', 'Diesel'] %}
+              {% set ns = namespace(items=[]) %}
               {% for e in ents %}
-              **{{ state_attr(e, 'friendly_name') }}:**
-              {% if states(e) | is_number %}{{ states(e) | float | round(3) }} €{% else %}{{ states(e) }}{% endif %}
-
-              {% endfor %}
+              {% set n = state_attr(e, 'friendly_name') or '' %}
+              {% if n.endswith(fuel) and states(e) | is_number %}
+              {% set ns.items = ns.items + [[states(e) | float, n | replace(' ' ~ fuel, '')]] %}
               {% endif %}
+              {% endfor %}
+              {% set items = ns.items | sort %}
+              {% if items %}
+              **{{ fuel }}**
+
+              {% for it in items %}
+              {% set many = items | length > 1 %}
+              {% set icon = '🟢' if (many and loop.first) else ('🔴' if (many and loop.last) else '🟡') %}
+              {{ icon }} {{ '█' * ([((it[0] - 1.4) * 25) | round | int, 1] | max) }} **{{ '%.3f' | format(it[0]) }} €** · {{ it[1] }}<br>
+              {% endfor %}
+
+              {% endif %}
+              {% endfor %}
           - type: entities
             entities:
               - binary_sensor.flowsinsor_belegung
