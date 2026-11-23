@@ -274,6 +274,17 @@ views:
               {% endif %}
               {% endfor %}
           - type: entities
+            title: ⚡ Strom (Monat)
+            entities:
+              - entity: sensor.stromverbrauch_monat
+                name: Verbrauch
+              - entity: sensor.stromkosten_monat
+                name: Kosten
+              - type: divider
+              - entity: input_number.strom_stand_aktuell
+              - entity: input_number.strom_stand_monatsanfang
+              - entity: input_number.strom_preis
+          - type: entities
             entities:
               - binary_sensor.flowsinsor_belegung
           - type: tile
