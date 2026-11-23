@@ -66,20 +66,6 @@ views:
               - type: light-brightness
             features_position: bottom
           - type: tile
-            entity: light.schlaffzimmerlischt
-            name: Schlafzimmer
-            icon: mdi:bed
-            vertical: true
-            tap_action:
-              action: toggle
-            icon_tap_action:
-              action: toggle
-            hold_action:
-              action: more-info
-            features:
-              - type: light-brightness
-            features_position: bottom
-          - type: tile
             entity: light.silalischt
             name: Sila
             icon: mdi:lamp
@@ -132,8 +118,6 @@ views:
           - type: heading
             heading: Musik
             icon: mdi:speaker
-          - type: tile
-            entity: media_player.wohnzimmer
           - type: tile
             entity: media_player.flur
           - type: tile
