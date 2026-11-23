@@ -35,8 +35,8 @@ views:
         column_span: 2
         cards:
           - type: heading
-            heading: Geräte
-            icon: mdi:lightbulb-group
+            heading: Schnellaktionen
+            icon: mdi:flash
           - type: button
             name: Wir sind weg
             icon: mdi:home-export-outline
@@ -57,6 +57,9 @@ views:
             tap_action:
               action: perform-action
               perform_action: script.wir_sind_da
+          - type: heading
+            heading: Lichter
+            icon: mdi:lightbulb-group
           - type: tile
             entity: light.tradfribulbe27wsglobeclear806lm
             name: Wohnzimmer
@@ -153,6 +156,9 @@ views:
             features:
               - type: light-brightness
             features_position: bottom
+          - type: heading
+            heading: Steckdose & TV
+            icon: mdi:power-plug
           - type: tile
             entity: switch.balkon_steckdose
             name: Balkon
@@ -186,24 +192,28 @@ views:
             entity: media_player.wohnzimmerg
             name: Wohnzimmer
             icon: mdi:speaker
+            vertical: true
             grid_options:
               columns: 4
           - type: tile
             entity: media_player.flur
             name: Flur
             icon: mdi:speaker
+            vertical: true
             grid_options:
               columns: 4
           - type: tile
             entity: media_player.schlafzimmerg
             name: Schlafzimmer
             icon: mdi:speaker
+            vertical: true
             grid_options:
               columns: 4
           - type: tile
             entity: media_player.gruppe_music
             name: Alle Boxen
             icon: mdi:speaker
+            vertical: true
             grid_options:
               columns: 4
       # ---------- 3. INFO ----------
