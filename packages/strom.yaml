@@ -18,7 +18,7 @@ input_number:
     mode: box
     unit_of_measurement: kWh
   strom_preis:
-    name: Strompreis (0 = 0,32 €)
+    name: Arbeitspreis (0 = 0,312 €)
     icon: mdi:currency-eur
     min: 0
     max: 2
@@ -42,5 +42,13 @@ template:
         icon: mdi:cash
         state: >
           {% set p = states('input_number.strom_preis') | float(0) %}
-          {% set p = p if p > 0 else 0.32 %}
-          {{ (states('sensor.stromverbrauch_monat') | float(0) * p) | round(2) }}
+          {% set p = p if p > 0 else 0.312 %}
+          {# Grundpreis 173,93 €/Jahr = 14,49 €/Monat #}
+          {{ (states('sensor.stromverbrauch_monat') | float(0) * p + 173.93 / 12) | round(2) }}
+      - name: Strom Abschlag Differenz
+        unique_id: strom_abschlag_differenz
+        unit_of_measurement: "€"
+        icon: mdi:scale-balance
+        # positiv = weniger verbraucht als der Abschlag (119 €/Monat)
+        state: >
+          {{ (119 - states('sensor.stromkosten_monat') | float(0)) | round(2) }}

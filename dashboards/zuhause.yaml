@@ -279,7 +279,9 @@ views:
               - entity: sensor.stromverbrauch_monat
                 name: Verbrauch
               - entity: sensor.stromkosten_monat
-                name: Kosten
+                name: Kosten inkl. Grundpreis
+              - entity: sensor.strom_abschlag_differenz
+                name: Abschlag 119 € – Kosten
               - type: divider
               - entity: input_number.strom_stand_aktuell
               - entity: input_number.strom_stand_monatsanfang
