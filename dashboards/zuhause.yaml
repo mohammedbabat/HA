@@ -38,17 +38,25 @@ views:
             heading: Geräte
             icon: mdi:lightbulb-group
           - type: button
-            name: Alles aus
-            icon: mdi:power
+            name: Wir sind weg
+            icon: mdi:home-export-outline
             show_state: false
             grid_options:
-              columns: full
+              columns: 6
               rows: 2
             tap_action:
               action: perform-action
-              perform_action: script.alles_aus
-              confirmation:
-                text: Wirklich alles ausschalten?
+              perform_action: script.wir_sind_weg
+          - type: button
+            name: Wir sind da
+            icon: mdi:home-import-outline
+            show_state: false
+            grid_options:
+              columns: 6
+              rows: 2
+            tap_action:
+              action: perform-action
+              perform_action: script.wir_sind_da
           - type: tile
             entity: light.tradfribulbe27wsglobeclear806lm
             name: Wohnzimmer

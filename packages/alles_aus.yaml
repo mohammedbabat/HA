@@ -21,6 +21,21 @@ script:
             - media_player.gruppe_music
         continue_on_error: true
 
+  wir_sind_weg:
+    alias: Wir sind weg
+    icon: mdi:home-export-outline
+    sequence:
+      - action: script.alles_aus
+
+  wir_sind_da:
+    alias: Wir sind da
+    icon: mdi:home-import-outline
+    sequence:
+      - action: light.turn_on
+        target:
+          entity_id: light.tradfribulbe27wsglobeclear806lm_2
+        continue_on_error: true
+
 automation:
   - id: alles_aus_wenn_niemand_zuhause
     alias: Alles aus wenn niemand zuhause
