@@ -55,3 +55,18 @@ automation:
         state: not_home
     actions:
       - action: script.alles_aus
+
+  - id: flur_licht_wenn_jemand_in_der_naehe
+    alias: Flurlicht an wenn jemand in der Nähe
+    triggers:
+      - trigger: zone
+        entity_id:
+          - person.mbabat
+          - person.habiba
+        zone: zone.naehe
+        event: enter
+    actions:
+      - action: light.turn_on
+        target:
+          entity_id: light.tradfribulbe27wsglobeclear806lm_2
+        continue_on_error: true
