@@ -38,6 +38,20 @@ views:
               confirmation:
                 text: Wirklich alles ausschalten?
           - type: tile
+            entity: light.tradfribulbe27wsglobeclear806lm
+            name: Wohnzimmer
+            icon: mdi:sofa
+            vertical: true
+            tap_action:
+              action: toggle
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+            features:
+              - type: light-brightness
+            features_position: bottom
+          - type: tile
             entity: light.essen_licht
             name: Essen
             icon: mdi:ceiling-light
@@ -66,7 +80,21 @@ views:
               - type: light-brightness
             features_position: bottom
           - type: tile
-            entity: light.silalischt
+            entity: light.tradfri_bulb_e27_cws_globe_806lm_3
+            name: Schlafzimmer
+            icon: mdi:bed
+            vertical: true
+            tap_action:
+              action: toggle
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+            features:
+              - type: light-brightness
+            features_position: bottom
+          - type: tile
+            entity: light.tradfri_bulb_e27_cws_globe_806lm_2
             name: Sila
             icon: mdi:lamp
             vertical: true
@@ -80,8 +108,8 @@ views:
               - type: light-brightness
             features_position: bottom
           - type: tile
-            entity: light.flow_licht
-            name: Flow
+            entity: light.tradfribulbe27wsglobeclear806lm_2
+            name: Flur
             icon: mdi:lightbulb
             vertical: true
             tap_action:
