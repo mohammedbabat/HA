@@ -40,24 +40,95 @@ views:
           - type: tile
             entity: light.essen_licht
             name: Essen
+            icon: mdi:ceiling-light
+            vertical: true
+            tap_action:
+              action: toggle
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+            features:
+              - type: light-brightness
+            features_position: bottom
           - type: tile
             entity: light.kuche_licht
             name: Küche
+            icon: mdi:ceiling-light
+            vertical: true
+            tap_action:
+              action: toggle
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+            features:
+              - type: light-brightness
+            features_position: bottom
           - type: tile
             entity: light.schlaffzimmerlischt
             name: Schlafzimmer
+            icon: mdi:bed
+            vertical: true
+            tap_action:
+              action: toggle
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+            features:
+              - type: light-brightness
+            features_position: bottom
           - type: tile
             entity: light.silalischt
             name: Sila
+            icon: mdi:lamp
+            vertical: true
+            tap_action:
+              action: toggle
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+            features:
+              - type: light-brightness
+            features_position: bottom
           - type: tile
             entity: light.flow_licht
             name: Flow
+            icon: mdi:lightbulb
+            vertical: true
+            tap_action:
+              action: toggle
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+            features:
+              - type: light-brightness
+            features_position: bottom
           - type: tile
             entity: switch.balkon_steckdose
             name: Balkon
+            icon: mdi:power-socket-eu
+            vertical: true
+            tap_action:
+              action: toggle
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
           - type: tile
             entity: media_player.babat
             name: TV
+            icon: mdi:television
+            vertical: true
+            tap_action:
+              action: toggle
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
           - type: heading
             heading: Musik
             icon: mdi:speaker
