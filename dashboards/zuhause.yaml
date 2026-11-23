@@ -65,6 +65,7 @@ views:
             name: Wohnzimmer
             icon: mdi:sofa
             vertical: true
+            color: orange
             grid_options:
               columns: 4
             tap_action:
@@ -81,6 +82,7 @@ views:
             name: Essen
             icon: mdi:ceiling-light
             vertical: true
+            color: orange
             grid_options:
               columns: 4
             tap_action:
@@ -97,6 +99,7 @@ views:
             name: Küche
             icon: mdi:ceiling-light
             vertical: true
+            color: orange
             grid_options:
               columns: 4
             tap_action:
@@ -113,6 +116,7 @@ views:
             name: Schlafzimmer
             icon: mdi:bed
             vertical: true
+            color: orange
             grid_options:
               columns: 4
             tap_action:
@@ -129,6 +133,7 @@ views:
             name: Sila
             icon: mdi:lamp
             vertical: true
+            color: orange
             grid_options:
               columns: 4
             tap_action:
@@ -145,6 +150,7 @@ views:
             name: Flur
             icon: mdi:lightbulb
             vertical: true
+            color: orange
             grid_options:
               columns: 4
             tap_action:
@@ -164,6 +170,7 @@ views:
             name: Balkon
             icon: mdi:power-socket-eu
             vertical: true
+            color: orange
             grid_options:
               columns: 4
             tap_action:
@@ -222,11 +229,26 @@ views:
           - type: heading
             heading: Info
             icon: mdi:information
-          - type: glance
-            show_state: true
-            entities:
-              - person.habiba
-              - person.mbabat
+          - type: tile
+            entity: person.mbabat
+            name: Mohammed
+            vertical: true
+            show_entity_picture: true
+            color: green
+            grid_options:
+              columns: 6
+            hold_action:
+              action: more-info
+          - type: tile
+            entity: person.habiba
+            name: Habiba
+            vertical: true
+            show_entity_picture: true
+            color: green
+            grid_options:
+              columns: 6
+            hold_action:
+              action: more-info
           - type: markdown
             title: ⛽ Tanken · SB Aachener Str.
             content: >
