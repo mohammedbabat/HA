@@ -38,9 +38,6 @@ views:
               confirmation:
                 text: Wirklich alles ausschalten?
           - type: tile
-            entity: light.wohnzimmerlischt
-            name: Wohnzimmer
-          - type: tile
             entity: light.essen_licht
             name: Essen
           - type: tile
