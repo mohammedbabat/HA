@@ -183,6 +183,12 @@ views:
             heading: Musik
             icon: mdi:music
           - type: tile
+            entity: media_player.wohnzimmerg
+            name: Wohnzimmer
+            icon: mdi:speaker
+            grid_options:
+              columns: 4
+          - type: tile
             entity: media_player.flur
             name: Flur
             icon: mdi:speaker
