@@ -286,6 +286,25 @@ views:
               - entity: input_number.strom_stand_aktuell
               - entity: input_number.strom_stand_monatsanfang
               - entity: input_number.strom_preis
+          - type: markdown
+            title: 📶 Im WLAN
+            content: |
+              {% set d = integration_entities('unifi') | select('match', 'device_tracker\\.') | list %}
+              {% set ns = namespace(names=[]) %}
+              {% for e in d %}
+              {% if is_state(e, 'home') %}
+              {% set ns.names = ns.names + [state_attr(e, 'friendly_name') or e] %}
+              {% endif %}
+              {% endfor %}
+              {% if d | length == 0 %}
+              Keine UniFi-Geräte gefunden. In der UniFi-Integration unter „Konfigurieren" das Verfolgen von Clients einschalten.
+              {% else %}
+              **{{ ns.names | length }} Geräte verbunden**
+
+              {% for n in ns.names | sort %}
+              🟢 {{ n }}<br>
+              {% endfor %}
+              {% endif %}
           - type: entities
             entities:
               - binary_sensor.flowsinsor_belegung
