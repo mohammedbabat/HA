@@ -195,16 +195,21 @@ views:
           - type: heading
             heading: Musik
             icon: mdi:music
-          - type: button
-            name: YouTube Musik
-            icon: mdi:youtube
-            show_state: false
+          - type: media-control
+            entity: media_player.ytube_music_player
             grid_options:
               columns: full
-              rows: 2
-            tap_action:
-              action: perform-action
-              perform_action: script.youtube_musik
+          - type: entities
+            title: YouTube Musik
+            grid_options:
+              columns: full
+            entities:
+              - entity: select.ytube_music_player_playlist
+                name: Playlist
+              - entity: select.ytube_music_player_speaker
+                name: Box
+              - entity: select.ytube_music_player_play_mode
+                name: Wiedergabe
           - type: tile
             entity: media_player.wohnzimmerg
             name: Wohnzimmer
@@ -233,14 +238,6 @@ views:
             vertical: true
             grid_options:
               columns: 4
-            tap_action:
-              action: perform-action
-              perform_action: script.youtube_musik
-            icon_tap_action:
-              action: perform-action
-              perform_action: script.youtube_musik
-            hold_action:
-              action: more-info
       # ---------- 3. INFO ----------
       - type: grid
         cards:
