@@ -195,6 +195,16 @@ views:
           - type: heading
             heading: Musik
             icon: mdi:music
+          - type: button
+            name: YouTube Musik
+            icon: mdi:youtube
+            show_state: false
+            grid_options:
+              columns: full
+              rows: 2
+            tap_action:
+              action: perform-action
+              perform_action: script.youtube_musik
           - type: tile
             entity: media_player.wohnzimmerg
             name: Wohnzimmer
