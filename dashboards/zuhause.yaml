@@ -233,6 +233,14 @@ views:
             vertical: true
             grid_options:
               columns: 4
+            tap_action:
+              action: perform-action
+              perform_action: script.youtube_musik
+            icon_tap_action:
+              action: perform-action
+              perform_action: script.youtube_musik
+            hold_action:
+              action: more-info
       # ---------- 3. INFO ----------
       - type: grid
         cards:

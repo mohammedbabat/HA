@@ -7,7 +7,7 @@ script:
     sequence:
       - action: media_extractor.play_media
         target:
-          entity_id: media_player.flur
+          entity_id: media_player.gruppe_music
         data:
           media_content_type: music
           media_content_id: "https://www.youtube.com/watch?v=I203G1sMGDg"
