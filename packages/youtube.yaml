@@ -1,13 +1,13 @@
-# YouTube-Musik per Cast auf die Boxen schicken (ohne Anmeldung in HA)
+# YouTube-Musik: Ton per media_extractor (yt-dlp) direkt als Stream auf die Box schicken.
+# Voraussetzung: in configuration.yaml steht die Zeile  media_extractor:
 script:
   youtube_musik:
     alias: YouTube Musik
     icon: mdi:youtube
     sequence:
-      - action: media_player.play_media
+      - action: media_extractor.play_media
         target:
           entity_id: media_player.flur
         data:
-          media_content_type: cast
-          media_content_id: >-
-            {"app_name":"youtube","media_id":"I203G1sMGDg","playlist_id":"PLzjs7McP8gqrgalD2shbL6Sf7cvtZ9YhL"}
+          media_content_type: music
+          media_content_id: "https://www.youtube.com/watch?v=I203G1sMGDg"
