@@ -211,7 +211,7 @@ views:
               - entity: select.ytube_music_player_play_mode
                 name: Wiedergabe
           - type: tile
-            entity: media_player.wohnzimmer
+            entity: media_player.googlehome4783
             name: Wohnzimmer
             icon: mdi:speaker
             vertical: true
