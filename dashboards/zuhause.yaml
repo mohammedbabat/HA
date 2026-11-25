@@ -195,21 +195,6 @@ views:
           - type: heading
             heading: Musik
             icon: mdi:music
-          - type: media-control
-            entity: media_player.ytube_music_player
-            grid_options:
-              columns: full
-          - type: entities
-            title: YouTube Musik
-            grid_options:
-              columns: full
-            entities:
-              - entity: select.ytube_music_player_playlist
-                name: Playlist
-              - entity: select.ytube_music_player_speaker
-                name: Box
-              - entity: select.ytube_music_player_play_mode
-                name: Wiedergabe
           - type: tile
             entity: media_player.googlehome4783
             name: Wohnzimmer
